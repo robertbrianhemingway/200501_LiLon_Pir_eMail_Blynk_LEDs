@@ -3,8 +3,3 @@ Analog pin A0
   connect A0 to junction LDR to 1K
   Readings range from 15 to 318, with 32 being a good
     limit for night and day in this project
-    
-Uses 4 gpio pins
-2 as inputs from pirs
-2 as outputs to the relays driving the LEDs
-
