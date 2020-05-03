@@ -48,9 +48,13 @@ char auth[] = "RFQizkZailhQNgGQ2t_1QMKPIFqSuq3j";
 const char* ssid = "OPTUS_369ECE";
 const char* pass = "borelleres79249";
 bool  eMailButtonState;
+bool  manualOnOffButton;
 // -------------------------- functions ---
 BLYNK_WRITE(V1) {
   eMailButtonState = param.asInt();
+}
+BLYNK_WRITE(V3) {
+  manualOnOffButton = param.asInt();
 }
 BLYNK_CONNECTED() {
   // Synchronize time on connection
