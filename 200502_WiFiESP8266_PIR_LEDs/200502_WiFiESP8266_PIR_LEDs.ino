@@ -34,9 +34,9 @@
 //#define  timingPot  A1  // only 1 analog pin on WiFi ESP8266
 
 // -------------------------- Variables ---
-String version = "200502 v0a";
+String version = "200502 v0b";
 LEDUnit     Front(D1,D2);     // led pin, pir pin
-LEDUnit     Back(D3,D5);
+LEDUnit     Back(D3,D5);. // D4 used by system somehow
 
 WidgetLED LEDs(V0);
 WidgetTerminal terminal(V2);
