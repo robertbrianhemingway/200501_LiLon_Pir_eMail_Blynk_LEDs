@@ -1,6 +1,8 @@
 void loop() {
     Blynk.run();
 
+		// flash D3 to signal loop is running
+		flashD3();
     // first check for manualOnOffButton getPirPinState
     if (manualOnOffButton) {
         // manually force LEDs on
@@ -9,7 +11,6 @@ void loop() {
         Back.setOn();
     } else {
         // poll the pirPins
-        flash13(1);
         if (Front.getPirPinState()) Front_ISR();
         if (Back.getPirPinState()) Back_ISR();
 

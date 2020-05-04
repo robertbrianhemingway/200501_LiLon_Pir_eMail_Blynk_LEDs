@@ -17,9 +17,21 @@
  * There is only one analog pin, which I will use for ldrPin
  * and set a time on in the software
  * 
- * DO NOT USE GPIO 2 (D2) - stops uploads and normal functioning
- */
-#define     times 3    // # of flashes of led 13
+ * DO NOT USE GPIO 2 (D4) - stops uploads and normal functioning
+ * V4a is a release for use in our garage. An issue is that there
+ *     is one relay for both LEDs, and both PIRs.
+ *     Pin assignments
+ *			D1 - relay (green tape 7)
+ *			D2 - pir input (green tape 2)
+ *			D3 - flashing LED that signals loop is running
+ *			D4 - do not use
+ *			D5 - pir input (gree tape 3)
+ *
+ *			D7 - siren (not used yet)
+ *			A0 - green tape A0
+ *	 			 - green tape A1 not connected
+ */ 
+#define     times 4    // # of flashes of led 13
 // to indicate successful upload
 // Arduino ID of GPIO 13 is board pin D7
 
@@ -34,9 +46,9 @@
 //#define  timingPot  A1  // only 1 analog pin on WiFi ESP8266
 
 // -------------------------- Variables ---
-String version = "200502 v0a";
+String version = "200502 v4a";
 LEDUnit     Front(D1,D2);     // led pin, pir pin
-LEDUnit     Back(D3,D5);
+LEDUnit     Back(D1,D5);
 
 WidgetLED LEDs(V0);
 WidgetTerminal terminal(V2);
@@ -122,11 +134,19 @@ void Back_ISR() {  // keep simple and short
 
 // --------------------------
 void flash13(byte _times) { // to signal a sucessful upload
-    if (_times < 0) _times = 3; // just in case
+		// by flashing D3 a number of times
+    if ((_times < 0) || (_times > 6)) _times = 3; // just in case
     for (int i=0;i<_times;i++) {
-        setSirenOn();
-        delay(1000);
-        digitalWrite(sirenPin, LOW);
-        delay(1000);
+        digitalWrite(D3,HIGH);
+        delay(500);
+        digitalWrite(D3, LOW);
+        delay(500);
     }
 }
+void flashD3() {
+	digitalWrite(D3,HIGH);
+	delay(200);
+	digitalWrite(D3,LOW);
+	delay(200);
+}
+// ------------------------------
