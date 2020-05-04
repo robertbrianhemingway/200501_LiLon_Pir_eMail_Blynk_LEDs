@@ -8,4 +8,5 @@ Arduino based project files
 > 4. Power supply
 ***
 ### 200504 - what about OTA updating ?
-As this LiLon will be downstairs in the carport area, OTA would be convenient.
+As this LiLon will be downstairs in the carport area, OTA would be convenient
+see https://lastminuteengineers.com/esp8266-ota-updates-arduino-ide/
