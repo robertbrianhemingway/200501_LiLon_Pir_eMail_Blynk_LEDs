@@ -1,8 +1,9 @@
 void loop() {
+    ArduinoOTA.handle();
     Blynk.run();
 
-		// flash D3 to signal loop is running
-		flashD3();
+	// flash D4 to signal loop is running
+	flashD4(1);
     // first check for manualOnOffButton getPirPinState
     if (manualOnOffButton) {
         // manually force LEDs on
@@ -29,3 +30,22 @@ void loop() {
         }
     }
 }
+
+// ----------------------------------------------
+/*
+void loop() {
+  ArduinoOTA.handle();
+
+//loop to blink without delay
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
+  // save the last time you blinked the LED
+  previousMillis = currentMillis;
+  // if the LED is off turn it on and vice-versa:
+  ledState = not(ledState);
+  // set the LED with the ledState of the variable:
+  digitalWrite(led,  ledState);
+  }
+}
+*/
+// --------------------------------------------------
